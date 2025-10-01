@@ -1,0 +1,16 @@
+[
+  {
+    "name": "API Server",
+    "port": 3000,
+    "processName": "node",
+    "cwd": "C:\\Users\\Whimsy\\Downloads\\TRUCK-DISPATCH-PLATFORM\\api",
+    "startCommand": "Start-Process cmd.exe -ArgumentList '/c set GOOGLE_APPLICATION_CREDENTIALS=C:\\Users\\Whimsy\\Downloads\\TRUCK-DISPATCH-PLATFORM\\studio-9174896613-347b2-firebase-adminsdk-fbsvc-81489eb59d.json && npm run start:api' -WorkingDirectory C:\\Users\\Whimsy\\Downloads\\TRUCK-DISPATCH-PLATFORM\\api"
+  },
+  {
+    "name": "Client Server",
+    "port": 5173,
+    "processName": "node",
+    "cwd": "C:\\Users\\Whimsy\\Downloads\\TRUCK-DISPATCH-PLATFORM\\client",
+    "startCommand": "npm run start:client"
+  }
+]

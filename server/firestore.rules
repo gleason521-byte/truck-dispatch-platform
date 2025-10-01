@@ -1,0 +1,66 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isUserAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    function userHasRole(role) {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == role;
+    }
+
+    function userIsInCompany(companyId) {
+       return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.companyId == companyId;
+    }
+    
+    // Companies: Admins can read all, 3PL admins can read their own. No one can write yet.
+    match /companies/{companyId} {
+      allow read: if isUserAuthenticated() && (userHasRole('admin') || (userHasRole('3pl_admin') && userIsInCompany(companyId)));
+      allow write: if isUserAuthenticated() && userHasRole('admin');
+    }
+
+    // Users: Authenticated users can read/update their own profile. Admins can read all.
+    match /users/{userId} {
+      allow read: if isUserAuthenticated() && (isOwner(userId) || userHasRole('admin'));
+      allow update: if isUserAuthenticated() && isOwner(userId);
+      allow create: if isUserAuthenticated(); // Allow creation during sign-up flow.
+    }
+
+    // Projects: Admins can manage projects.
+    match /projects/{projectId} {
+       allow read, write: if isUserAuthenticated() && userHasRole('admin');
+    }
+    
+    // Jobs: Admins/3PL Admins can read all jobs. Only admins can create/update.
+    match /jobs/{jobId} {
+       allow read: if isUserAuthenticated() && (userHasRole('admin') || userHasRole('3pl_admin'));
+       allow write: if isUserAuthenticated() && userHasRole('admin');
+    }
+
+    // Dispatches (Root Collection): For admin/manager overview
+    // Admins and 3PL admins can read all dispatches in their respective companies.
+    match /dispatches/{dispatchId} {
+        allow read: if isUserAuthenticated() && (userHasRole('admin') || (userHasRole('3pl_admin') && userIsInCompany(resource.data.companyId)));
+        // Writes are handled via the denormalized copies below, but allow creation/update by authorized roles.
+        allow write: if isUserAuthenticated() && (userHasRole('admin') || isOwner(resource.data.driverId));
+    }
+
+    // Denormalized Dispatches (Driver-specific)
+    // A driver can only access dispatches within their own user document path.
+    match /users/{driverId}/dispatches/{dispatchId} {
+       allow read, write: if isUserAuthenticated() && isOwner(driverId);
+    }
+    
+    // Trucks: Any authenticated user can read truck locations. Only the assigned driver can update their own truck's location.
+    match /trucks/{truckId} {
+      allow read: if isUserAuthenticated();
+      allow write: if isUserAuthenticated() && isOwner(truckId); // truckId is the driver's UID
+    }
+  }
+}

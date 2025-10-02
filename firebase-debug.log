@@ -1,0 +1,52 @@
+[debug] [2025-10-01T21:11:39.359Z] ----------------------------------------------------------------------
+[debug] [2025-10-01T21:11:39.361Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Whimsy\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2025-10-01T21:11:39.362Z] CLI Version:   14.17.0
+[debug] [2025-10-01T21:11:39.362Z] Platform:      win32
+[debug] [2025-10-01T21:11:39.362Z] Node Version:  v22.20.0
+[debug] [2025-10-01T21:11:39.362Z] Time:          Wed Oct 01 2025 16:11:39 GMT-0500 (Central Daylight Time)
+[debug] [2025-10-01T21:11:39.362Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-10-01T21:11:39.369Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-10-01T21:11:39.369Z] > authorizing via signed-in user (gleason521@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Whimsy\Downloads\TRUCK-DISPATCH-PLATFORM
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-10-01T21:11:41.656Z] Using project from CLI flag: studio-9174896613-347b2
+[debug] [2025-10-01T21:11:41.657Z] Checked if tokens are valid: false, expires at: 1759353963803
+[debug] [2025-10-01T21:11:41.657Z] Checked if tokens are valid: false, expires at: 1759353963803
+[debug] [2025-10-01T21:11:41.658Z] > refreshing access token with scopes: []
+[debug] [2025-10-01T21:11:41.662Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-01T21:11:41.662Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-01T21:11:41.837Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-01T21:11:41.837Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-01T21:11:41.850Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/studio-9174896613-347b2 [none]
+[debug] [2025-10-01T21:11:42.094Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/studio-9174896613-347b2 200
+[debug] [2025-10-01T21:11:42.094Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/studio-9174896613-347b2 {"projectId":"studio-9174896613-347b2","projectNumber":"336869247117","displayName":"Firebase app","name":"projects/studio-9174896613-347b2","resources":{"hostingSite":"studio-9174896613-347b2"},"state":"ACTIVE","etag":"1_ca4d0603-a26c-4917-a378-af57a02f7938"}
+[info] i  Using project studio-9174896613-347b2 (Firebase app) 
+[info] 
+=== Hosting Setup
+[debug] [2025-10-01T21:11:42.205Z] Checked if tokens are valid: true, expires at: 1759356700837
+[debug] [2025-10-01T21:11:42.205Z] Checked if tokens are valid: true, expires at: 1759356700837
+[debug] [2025-10-01T21:11:42.205Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/studio-9174896613-347b2 [none]
+[debug] [2025-10-01T21:11:42.348Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/studio-9174896613-347b2 200
+[debug] [2025-10-01T21:11:42.348Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/studio-9174896613-347b2 {"projectId":"studio-9174896613-347b2","projectNumber":"336869247117","displayName":"Firebase app","name":"projects/studio-9174896613-347b2","resources":{"hostingSite":"studio-9174896613-347b2"},"state":"ACTIVE","etag":"1_ca4d0603-a26c-4917-a378-af57a02f7938"}
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 

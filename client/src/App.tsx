@@ -1,10 +1,9 @@
 import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import Login from './Login';
-import Signup from './Signup';
+import Signup from './Signup'; // no .tsx
 import Dashboard from './Dashboard';
 import ProtectedRoute from './ProtectedRoute';
-
 export default function App() {
   return (
     <div>
@@ -28,4 +27,4 @@ export default function App() {
     </div>
   );
 }
-  
+// Trigger Firebase deploy
